@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VolunLink - Connect with Volunteering Opportunities</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">VolunLink</div>
+        <div class="nav-links">
+            <a href="#" data-page="home" class="active">Главная</a>
+            <a href="#" data-page="add_event">Добавить мероприятие</a>
+            <a href="#" data-page="about">О нас</a>
+            <a href="#" data-page="profile" id="profileLink">Профиль</a>
+            <a href="#" id="authLink">Войти</a>
+        </div>
+    </nav>
+
+    <!-- Auth Forms -->
+    <div id="authPage" class="page">
+        <div class="auth-container">
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-form="login">Login</button>
+                <button class="auth-tab" data-form="register">Register</button>
+            </div>
+            
+            <form id="loginForm" class="auth-form">
+                <h2>Login</h2>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+
+            <form id="registerForm" class="auth-form hidden">
+                <h2>Register</h2>
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page hidden">
+        <div class="hero-section">
+            <h1>Делай мир лучше вместе с нами</h1>
+            <p>Присоединяйтесь к сообществу волонтеров и помогайте менять мир к лучшему</p>
+        </div>
+
+        <div class="page-content">
+            <div class="filters-section">
+                <div class="filters">
+                    <select id="categoryFilter">
+                        <option value="">Все категории</option>
+                        <option value="ecology">Экология</option>
+                        <option value="health">Здоровье</option>
+                        <option value="education">Образование</option>
+                        <option value="culture">Культура</option>
+                        <option value="social">Социальная помощь</option>
+                    </select>
+                    <input type="text" id="cityFilter" placeholder="Поиск по городу">
+                </div>
+            </div>
+
+            <div class="events-section">
+                <h2>Актуальные мероприятия</h2>
+                <div class="events-list" id="eventsList">
+                    <div class="no-events hidden">
+                        <i class='bx bx-calendar-x'></i>
+                        <p>Мероприятий не найдено. Попробуйте изменить фильтры или добавьте новое мероприятие!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categories-overview">
+                <div class="category-card ecology">
+                    <i class='bx bx-leaf'></i>
+                    <h3>Экология</h3>
+                    <p>Помогите сохранить природу для будущих поколений</p>
+                </div>
+                <div class="category-card health">
+                    <i class='bx bx-heart'></i>
+                    <h3>Здоровье</h3>
+                    <p>Поддержите тех, кто нуждается в помощи</p>
+                </div>
+                <div class="category-card education">
+                    <i class='bx bx-book-reader'></i>
+                    <h3>Образование</h3>
+                    <p>Делитесь знаниями и опытом</p>
+                </div>
+                <div class="category-card social">
+                    <i class='bx bx-group'></i>
+                    <h3>Социальная помощь</h3>
+                    <p>Помогайте тем, кто в этом нуждается</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Event Page -->
+    <div id="add_eventPage" class="page hidden">
+        <div class="form-container">
+            <h1>Создать новое мероприятие</h1>
+            <form id="addEventForm" class="event-form">
+                <div class="form-group">
+                    <label for="eventTitle">Название мероприятия</label>
+                    <input type="text" id="eventTitle" placeholder="Введите название мероприятия" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventDescription">Описание</label>
+                    <textarea id="eventDescription" placeholder="Опишите мероприятие, его цели и важность" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventDate">Дата и время</label>
+                        <input type="datetime-local" id="eventDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventCategory">Категория</label>
+                        <select id="eventCategory" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="ecology">Экология</option>
+                            <option value="health">Здоровье</option>
+                            <option value="education">Образование</option>
+                            <option value="culture">Культура</option>
+                            <option value="social">Социальная помощь</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventAddress">Место проведения</label>
+                    <input type="text" id="eventAddress" placeholder="Укажите полный адрес проведения мероприятия" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventParticipants">Максимальное количество участников</label>
+                        <input type="number" id="eventParticipants" min="1" placeholder="Например: 50">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventRequirements">Требования к участникам</label>
+                    <textarea id="eventRequirements" placeholder="Укажите требования к участникам, что нужно взять с собой и т.д." rows="3"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="button-secondary" onclick="navigateToPage('home')">Отмена</button>
+                    <button type="submit" class="button-primary">Создать мероприятие</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profilePage" class="page hidden">
+        <div class="profile-container">
+            <div class="profile-header">
+                <i class='bx bxs-user-circle'></i>
+                <h2>Личный кабинет</h2>
+            </div>
+            
+            <div class="profile-info">
+                <div class="info-group">
+                    <label>Имя</label>
+                    <p id="profileName">-</p>
+                </div>
+                <div class="info-group">
+                    <label>Email</label>
+                    <p id="profileEmail">-</p>
+                </div>
+            </div>
+
+            <form id="preferencesForm" class="preferences-form">
+                <h3>Настройки профиля</h3>
+                
+                <div class="form-group">
+                    <label>Ваш город</label>
+                    <div class="input-with-icon">
+                        <i class='bx bx-map'></i>
+                        <input type="text" id="cityInput" placeholder="Введите ваш город">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Интересующие категории</label>
+                    <div class="interests-grid">
+                        <label class="interest-item">
+                            <input type="checkbox" value="ecology">
+                            <i class='bx bx-leaf'></i>
+                            <span>Экология</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" value="health">
+                            <i class='bx bx-heart'></i>
+                            <span>Здоровье</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" value="education">
+                            <i class='bx bx-book-reader'></i>
+                            <span>Образование</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" value="culture">
+                            <i class='bx bx-palette'></i>
+                            <span>Культура</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" value="social">
+                            <i class='bx bx-group'></i>
+                            <span>Социальная помощь</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Уведомления</label>
+                    <div class="notifications-settings">
+                        <label class="switch">
+                            <input type="checkbox" id="emailNotifications">
+                            <span class="slider"></span>
+                            <span class="switch-label">Email уведомления</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="button-primary">Сохранить изменения</button>
+            </form>
+
+            <div class="profile-stats">
+                <h3>Ваша активность</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i class='bx bx-calendar-check'></i>
+                        <span class="stat-value" id="eventsJoined">0</span>
+                        <span class="stat-label">Мероприятий</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class='bx bx-time-five'></i>
+                        <span class="stat-value" id="hoursVolunteered">0</span>
+                        <span class="stat-label">Часов</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class='bx bx-badge-check'></i>
+                        <span class="stat-value" id="achievementsCount">0</span>
+                        <span class="stat-label">Достижений</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="aboutPage" class="page hidden">
+        <div class="about-container">
+            <h1>About VolunLink</h1>
+            <div class="mission">
+                <h2>Our Mission</h2>
+                <p>VolunLink connects passionate volunteers with meaningful opportunities to make a difference in their communities. We believe in the power of collective action to create positive change.</p>
+            </div>
+            <div class="contact">
+                <h2>Contact Us</h2>
+                <p>Email: info@volunlink.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Volunteer Street, Community City</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
